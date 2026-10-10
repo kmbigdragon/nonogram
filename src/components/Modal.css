@@ -1,0 +1,478 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  overflow-y: auto;
+  background: rgba(14, 10, 36, 0.42);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: fade-in 0.18s ease-out;
+}
+
+.modal {
+  position: relative;
+  width: min(100%, 520px);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+  outline: none;
+  animation: modal-in 0.26s cubic-bezier(0.2, 1.2, 0.4, 1);
+}
+
+.modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px 8px 24px;
+  background: var(--surface);
+}
+
+.modal-header h2 {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.modal-close {
+  margin-left: auto;
+}
+
+.modal-body {
+  padding: 8px 24px 24px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+}
+
+/* ------------------------------------------------------------ settings */
+
+.settings-section + .settings-section {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.settings-section h3 {
+  margin-bottom: 8px;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.time-limits {
+  display: grid;
+  gap: 8px;
+  margin-top: 6px;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  transition: opacity 0.2s ease;
+}
+
+.time-limits.is-disabled {
+  opacity: 0.5;
+}
+
+.time-limits .link-btn {
+  justify-self: start;
+}
+
+.time-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.time-row-label {
+  flex: 1;
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+.settings-note {
+  margin-top: 10px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* ------------------------------------------------------------ rules */
+
+.rules-lead {
+  font-size: 16px;
+}
+
+.rules-lead strong,
+.rules-steps strong,
+.rules-tip strong {
+  color: var(--text-h);
+}
+
+.rules-steps {
+  display: grid;
+  gap: 12px;
+  margin: 18px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rules-steps li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.rules-num {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.rules-tip {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: var(--gold-soft);
+  color: var(--text);
+}
+
+.rules-tip > svg {
+  flex: none;
+  margin-top: 2px;
+  color: var(--gold);
+}
+
+.rules-tip p {
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+.rules-scoring,
+.rules-keys {
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.rules-scoring strong,
+.rules-keys > strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text-h);
+  font-size: 15px;
+}
+
+.rules-keys dl {
+  display: grid;
+  gap: 6px;
+  margin: 8px 0 0;
+}
+
+.rules-keys dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.rules-keys dd {
+  margin: 0;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+/* ------------------------------------------------------------ result */
+
+.result-modal {
+  width: min(100%, 460px);
+  text-align: center;
+}
+
+.result-modal .modal-header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 12px;
+  background: none;
+}
+
+.result-modal .modal-body {
+  padding-top: 32px;
+}
+
+.result-hero h2 {
+  margin-top: 14px;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.result-hero p {
+  margin-top: 6px;
+}
+
+.result-badge {
+  display: inline-grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  border-radius: 28px;
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: 0 18px 36px -12px var(--gradient-glow);
+  animation: badge-bounce 0.7s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+}
+
+.is-timeout .result-badge {
+  background: var(--danger);
+  box-shadow: 0 18px 36px -12px var(--danger);
+}
+
+@keyframes badge-bounce {
+  from {
+    transform: scale(0.3) rotate(-14deg);
+    opacity: 0;
+  }
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.star {
+  color: var(--surface-3);
+  animation: star-pop 0.45s cubic-bezier(0.3, 1.8, 0.5, 1) both;
+}
+
+.star.is-on {
+  color: var(--gold);
+  filter: drop-shadow(0 4px 8px var(--gold-soft));
+}
+
+.star:nth-child(2) {
+  transform: translateY(-6px);
+}
+
+@keyframes star-pop {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.result-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.result-stats > div {
+  display: grid;
+  gap: 2px;
+  padding: 12px 6px;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+
+.result-stat-value {
+  color: var(--text-h);
+  font-size: 20px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.result-stat-label {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.result-record {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  font-size: 14px;
+}
+
+.result-record.is-new {
+  background: var(--gold-soft);
+  color: var(--text-h);
+}
+
+.result-record svg {
+  flex: none;
+  color: var(--gold);
+}
+
+.result-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.result-actions-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.result-actions-row .btn {
+  padding: 0 12px;
+  font-size: 14px;
+}
+
+@media (max-width: 420px) {
+  .result-actions-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ------------------------------------------------------------ confirm */
+
+.confirm-modal {
+  width: min(100%, 400px);
+}
+
+/* ------------------------------------------------------------ nonogram additions */
+
+.time-row-label small {
+  margin-left: 8px;
+  color: var(--text-muted);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.result-art {
+  display: inline-grid;
+  place-items: center;
+  width: 132px;
+  height: 132px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: var(--surface-2);
+  box-shadow: 0 18px 36px -16px var(--gradient-glow);
+  animation: badge-bounce 0.7s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+}
+
+.result-picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.demo {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 0;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  font-size: 14px;
+}
+
+.demo figcaption strong {
+  color: var(--text-h);
+}
+
+.demo-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rules-tip .demo-row {
+  margin: 10px 0;
+}
+
+.demo-clue {
+  min-width: 34px;
+  word-spacing: 0.3em;
+  color: var(--text-h);
+  font-weight: 800;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.demo-cells {
+  display: flex;
+  overflow: hidden;
+  border: 2px solid var(--grid-strong);
+  border-radius: 5px;
+  background: var(--cell-bg);
+}
+
+.demo-cell {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border-right: 1px solid var(--grid-line);
+}
+
+.demo-cell:last-child {
+  border-right: 0;
+}
+
+.demo-cell.is-filled {
+  background: var(--fill);
+}
+
+.demo-cell.is-forced {
+  background: var(--gold);
+}
+
+.demo-cell.is-crossed::after {
+  content: '';
+  position: absolute;
+  inset: 26%;
+  background:
+    linear-gradient(45deg, transparent calc(50% - 1px), var(--cross) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)),
+    linear-gradient(-45deg, transparent calc(50% - 1px), var(--cross) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px));
+}
+
+@media (max-width: 420px) {
+  .demo-cell {
+    width: 20px;
+    height: 20px;
+  }
+}
